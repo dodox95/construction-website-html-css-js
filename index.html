@@ -1,0 +1,151 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Strona Główna</title>
+  <!-- Dodaj linki do Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<!-- Miejsce, w którym będzie załadowany navbar -->
+<div id="navbar-placeholder"></div>
+<div id="carousel-placeholder"></div>
+<div id="services-placeholder"></div>
+<div id="info-banner-placeholder"></div>
+
+<div id="portfolio-placeholder"></div>
+<div id="footer-placeholder"></div>
+
+<!-- Dodaj skrypty Bootstrap JS i jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+
+<!-- Skrypt do ładowania navbar.html i inicjalizacji dropdown -->
+<script>
+  $(function(){
+    $("#navbar-placeholder").load("components/navbar/navbar.html", function() {
+      // Ustawienie rozwijania dropdownów po najechaniu myszką
+      $('.navbar .dropdown').hover(function() {
+        $(this).find('.dropdown-menu').first().stop(true, true).delay(150).slideDown();
+      }, function() {
+        $(this).find('.dropdown-menu').first().stop(true, true).delay(100).slideUp();
+      });
+  
+      // Ustawienie rozwijania dropdownów dla ekranów dotykowych
+      $('.navbar .dropdown > a').click(function(){
+        location.href = this.href;
+      });
+    });
+  });
+  </script>
+
+  <!-- Skrypt do ładowania carousel.html -->
+<script>
+  $(function(){
+    $("#carousel-placeholder").load("components/carousel/carousel.html", function() {
+      $('.carousel').carousel();
+    });
+  });
+</script>
+<script>
+  $(function(){
+    // Your existing code to load navbar and carousel...
+    
+    // New code to load the info banner
+    $("#info-banner-placeholder").load("components/info-banner/info-banner.html");
+  });
+</script>
+
+<script>
+  $(function(){
+    // Your existing code to load navbar and carousel...
+    
+    // New code to load the services cards
+    $("#services-placeholder").load("components/services/services.html");
+  });
+</script>
+
+<script>
+  // ... Existing loading functions ...
+
+  // Load the portfolio component
+  $("#portfolio-placeholder").load("components/portfolio/portfolio.html", function() {
+    $('#portfolioCarousel').carousel();
+  });
+</script>
+
+<script>
+  $(function(){
+    // Your existing code to load navbar and carousel...
+    
+    // New code to load the services cards
+    $("#footer-placeholder").load("components/footer/footer.html");
+  });
+</script>
+
+<script>
+  $(document).ready(function()
+{
+
+   
+        if($('.bbb_slider').length)
+        {
+            var trendsSlider = $('.bbb_slider');
+            trendsSlider.owlCarousel(
+            {
+                loop:false,
+                margin:30,
+                nav:false,
+                dots:false,
+                autoplayHoverPause:true,
+                autoplay:false,
+                responsive:
+                {
+                    0:{items:1},
+                    575:{items:2},
+                    991:{items:3}
+                }
+            });
+
+            trendsSlider.on('click', '.bbb_fav', function (ev)
+            {
+                $(ev.target).toggleClass('active');
+            });
+
+            if($('.bbb_prev').length)
+            {
+                var prev = $('.bbb_prev');
+                prev.on('click', function()
+                {
+                    trendsSlider.trigger('prev.owl.carousel');
+                });
+            }
+
+            if($('.bbb_next').length)
+            {
+                var next = $('.bbb_next');
+                next.on('click', function()
+                {
+                    trendsSlider.trigger('next.owl.carousel');
+                });
+            }
+        }
+    
+
+    });
+</script>
+
+</body>
+</html>
